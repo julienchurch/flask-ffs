@@ -1,6 +1,7 @@
 import os
 from uuid import uuid4
 from werkzeug import secure_filename
+from flask import current_app as app
 
 class FFSMixin(object):
 
@@ -131,3 +132,4 @@ that inherits from `ImageMixin`.\n')
     for filename in self._get_supplementary_filenames():
       if filename:
         yield os.path.join(self.images_url, filename)
+
