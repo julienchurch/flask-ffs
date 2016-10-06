@@ -2,7 +2,7 @@ import os
 from uuid import uuid4
 from werkzeug import secure_filename
 
-class ImageMixin(object):
+class FFSMixin(object):
 
   @property
   def images_category(self):
