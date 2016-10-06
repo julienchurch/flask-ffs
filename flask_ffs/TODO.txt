@@ -1,0 +1,5 @@
+VAGUE PRIORITY LIST
+
+1) DRY up the code base, including instances where looping over the files checking for similar errors happens. Several (perhaps four?) functions duplicate error checks in a for-loop, and this should be handled automatically, including exceptions raise.
+
+2) Test it (lmao).
