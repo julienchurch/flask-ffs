@@ -6,7 +6,7 @@ from flask import current_app as app
 class FFSMixin(object):
 
   @property
-  def ffs_image_category(self):
+  def ffs_model_category(self):
     raise NotImplementedError
 
   default_prefix = '^'
@@ -102,11 +102,11 @@ that inherits from `ImageMixin`.\n')
 
   @property
   def images_url(self):
-    return os.path.join(app.config['IMAGES_URL'], self.ffs_image_category, self.ffs_model_id)
+    return os.path.join(app.config['IMAGES_URL'], self.ffs_model_category, self.ffs_model_id)
 
   @property
   def images_dir(self):
-    return os.path.join(app.config['IMAGES_DIR'], self.ffs_image_category, self.ffs_model_id)
+    return os.path.join(app.config['IMAGES_DIR'], self.ffs_model_category, self.ffs_model_id)
 
   @property
   def default_image(self):

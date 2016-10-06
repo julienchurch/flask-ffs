@@ -22,7 +22,7 @@ CLASSIFIERS = [
 
 setup(
     name = 'flask-ffs',
-    version = '0.1.3',
+    version = '0.3.0',
     description='A Flask library for the storage and retrieval of images on the file system.',
     long_description=long_description,
     url='https://github.com/julienchurch/ffs-images',
