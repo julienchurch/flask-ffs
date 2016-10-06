@@ -55,10 +55,16 @@ class FFSMixin(object):
       print('your model yet, which is when the directory is created.\n')
 
   def _get_supplementary_filenames(self):
-    filenames = os.listdir(self.images_dir)
-    for filename in filenames:
-      if not self._starts_with_default_prefix(filename):
-        yield filename
+    try:
+      filenames = os.listdir(self.images_dir)
+      for filename in filenames:
+        if not self._starts_with_default_prefix(filename):
+          yield filename
+    except FileNotFoundError as e:
+      print(e)
+      print('The directory you\'re trying to access doesn\'t exist.')
+      print('This is most likely because you haven\'t saved any images to')
+      print('your model yet, which is when the directory is created.\n')
 
   def __purge_defaults(self):
     filenames = os.listdir(self.images_dir)
@@ -149,7 +155,8 @@ that inherits from `ImageMixin`.\n')
   @property
   def supplementary_images(self):
     for filename in self._get_supplementary_filenames():
-      yield os.path.join(self.images_dir, filename)
+      if filename:
+        yield os.path.join(self.images_dir, filename)
 
   @property
   def url_for_default_image(self):
