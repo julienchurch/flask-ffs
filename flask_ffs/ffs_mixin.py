@@ -6,7 +6,7 @@ from flask import current_app as app
 class FFSMixin(object):
 
   @property
-  def images_category(self):
+  def ffs_image_category(self):
     raise NotImplementedError
 
   default_prefix = '^'
@@ -88,7 +88,7 @@ class FFSMixin(object):
     else: raise
 
   @property
-  def model_id(self):
+  def ffs_model_id(self):
     try:
       return secure_filename(str(self.id))
     except: 
@@ -96,17 +96,17 @@ class FFSMixin(object):
 To save an image associated with this object, you must \
 provide a means of identifying it on the file system. By \
 default an `id` attribute is tried; when if fails, the \
-`model_id` attribute must be set directly on the class \
+`ffs_model_id` attribute must be set directly on the class \
 that inherits from `ImageMixin`.\n')
       raise 
 
   @property
   def images_url(self):
-    return os.path.join(app.config['IMAGES_URL'], self.images_category, self.model_id)
+    return os.path.join(app.config['IMAGES_URL'], self.ffs_image_category, self.ffs_model_id)
 
   @property
   def images_dir(self):
-    return os.path.join(app.config['IMAGES_DIR'], self.images_category, self.model_id)
+    return os.path.join(app.config['IMAGES_DIR'], self.ffs_image_category, self.ffs_model_id)
 
   @property
   def default_image(self):
